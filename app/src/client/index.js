@@ -2,21 +2,24 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { subscribeToTimer } from './api/sock';
 
 class App extends Component {
-  state = {helloto: ''}
+  constructor(props) {
+    super(props);
+    subscribeToTimer((err, timestamp) => this.setState({
+      timestamp
+    }));
+  }
 
-  componentDidMount() {
-    fetch('/hello')
-      .then(res => res.json())
-      .then(helloto => this.setState({ helloto }));
+  state = {
+    timestamp: 'no timestamp yet'
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
-        <p>Hello {this.state.helloto}</p>
+        <h1>Hello World!</h1>
       </div>
     );
   }
