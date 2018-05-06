@@ -1,6 +1,6 @@
 var app = require('express')(),
   http = require('http').Server(app),
-  port = process.env.PORT || 9100,
+  port = process.env.PORT || 9101,
   mongoose = require('mongoose'),
   Game = require('./src/models/gameModel'), // Model
   bodyParser = require('body-parser'),

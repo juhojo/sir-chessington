@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "start cmd /k call mongod --auth --port 27017 --dbpath /data/db & start cmd /c nodemon ./index.js"
+    "start": "start cmd /k call mongod --auth --port 27017 --dbpath /data/db & start cmd /c nodemon ./index.js 9101"
   },
   "keywords": [
     "Restful",

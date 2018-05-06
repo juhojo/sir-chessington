@@ -14,8 +14,20 @@ const onLoad = (cb) => {
   // });
 };
 
+const onFailure = (cb) => {
+  socket.on('lobby create failed', (msg) => cb(msg));
+}
+
+const onLobbyCreated = (cb) => {
+  socket.on('lobby created', () => cb(null, true));
+}
+
 const turnListener = (cb) => {
   socket.on('turn change', (data) => cb(null, socket.id !== data.socketId));
+}
+
+const onCreateLobby = (cb) => {
+  socket.emit('create lobby', { playerId: socket.id });
 }
 
 const onClick = (cb) => {
@@ -29,4 +41,4 @@ const onClick = (cb) => {
 
 // export { subscribeToTimer };
 
-export { onLoad, turnListener, onClick };
+export { onLoad, onFailure, turnListener, onClick, onCreateLobby, onLobbyCreated };

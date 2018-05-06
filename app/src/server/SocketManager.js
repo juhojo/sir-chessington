@@ -1,10 +1,24 @@
 const io = require('./index').io;
+const RequestManager = require('./RequestManager');
 
 module.exports = function(socket) {
-    // here you can start emitting events to the client
     console.log(`socket id: ${socket.id}`);
 
     io.emit('user connected');
+
+    socket.on('create game', (data) => {
+
+    });
+
+    socket.on('create lobby', (data) => {
+      RequestManager('create lobby', data, (err, response) => {
+        if (!err) {
+          io.emit('lobby created', response);
+        } else {
+          io.emit('lobby create failed', 'Failed to create lobby');
+        }
+      });
+    });
 
     socket.on('button clicked', (data) => {
       console.log('socketId of clicker:', data.socketId);
