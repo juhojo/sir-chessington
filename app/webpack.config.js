@@ -23,8 +23,12 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        loader: 'style!css'
+        test: /\.css$/,
+        loaders: [ 'style-loader', 'css-loader' ],
+        // include: [
+        //   path.resolve(_dirname, "/src/client/ui/stylesheets/")
+        // ],
+        // loaders: [ 'style-loader', 'css-loader' ]
       }
     ]
   },
